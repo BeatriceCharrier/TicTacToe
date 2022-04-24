@@ -5,3 +5,5 @@
 - Need to be improved : 3 on a line is winner 
 
 - add Winner Event with stars
+
+- have a look : https://beatricecharrier.github.io/TicTacToe/
