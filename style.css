@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cells-size: 110px;
+    --marks-size: 40px;
+    --cells-color: hsl(205, 84%, 67%);
+    --x-color: hsl(151, 87%, 45%);
+    --o-color: rgb(244, 160, 86);
+    --hover-color: hsl(220, 23%, 25%);
+}
+.platform {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, auto);
+    margin: 50px;
+}
+
+.cells {
+    width: var(--cells-size);
+    height: var(--cells-size);
+    background-color: var(--cells-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.cells:hover {
+    background-color: var(--hover-color);
+}
+
+/* .....................
+         DRAWING X 
+ ....................... */
+
+.cells.x {
+    background-color: var(--x-color);
+}
+
+.cells.x::before,
+.cells.x::after {
+    content: "";
+    position: absolute;
+    width: calc(var(--marks-size) * .3);
+    height: calc(var(--marks-size) * 1.1);
+    background-color: white;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+.cells.x::before {
+    transform: rotate(45deg);
+    box-shadow: 5px 0px 2px;
+}
+
+.cells.x::after {
+    transform: rotate(-45deg);
+    box-shadow: 0px 5px 2px;
+}
+
+
+ /* .....................
+         DRAWING X hover 
+ ....................... */
+
+.platform.x .cells:not(.x):not(.o):hover::before, 
+.platform.x .cells:not(.x):not(.o):hover::after {
+    content: "";
+    position: absolute;
+    width: calc(var(--marks-size) * 0.5);
+    height: calc(var(--marks-size) * 1.5);
+    background-color: #aaa;
+    border-radius: 10px;
+}
+
+.platform.x .cells:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+    box-shadow: 5px 0px 2px;
+}
+
+.platform.x .cells:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+    box-shadow: 0px 5px 2px;
+}
+
+ /* .....................
+         DRAWING 0 
+ ....................... */
+
+ .cells.o {
+    background-color: var(--o-color);
+}
+
+.cells.o::before,
+.cells.o::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transition: all .5s;
+}
+
+/* External circle */
+.cells.o::before {
+    width: calc(var(--marks-size) * 1.2);
+    height: calc(var(--marks-size) * 1.2);
+    background-color: white;
+}
+
+/* Inner circle */
+.cells.o::after {
+    width: calc(var(--marks-size) * .8);
+    height: calc(var(--marks-size) * .8);
+    background-color: var(--o-color);
+}
+
+/* .....................
+         DRAWING O hover 
+ ....................... */
+
+.platform.o .cells:not(.x):not(.o):hover::before, 
+.platform.o .cells:not(.x):not(.o):hover::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transition: all .5s;
+}
+ 
+.platform.o .cells:not(.x):not(.o):hover::before {
+    width: calc(var(--marks-size) * 1.5);
+    height: calc(var(--marks-size) * 1.5);
+    background-color: #aaa;
+}
+ 
+.platform.o .cells:not(.x):not(.o):hover::after {
+    width: calc(var(--marks-size) * 1.1);
+    height: calc(var(--marks-size) * 1.1);
+    background-color: var(--hover-color);
+}
