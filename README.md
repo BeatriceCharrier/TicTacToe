@@ -6,4 +6,8 @@
 
 - add Winner Event with stars
 
-- have a look : https://beatricecharrier.github.io/TicTacToe/
+- wish to add template to display the game
+
+Thanks for your understanding
+
+Béatrice
